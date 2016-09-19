@@ -1,0 +1,129 @@
+@import "~bourbon-neat/app/assets/stylesheets/neat";
+@import "./../../../styles/base/colours";
+@import "./../../../styles/base/layout";
+
+:host {
+    @include span-columns(12);
+    &.isEditing {
+        // margin: default-spacing(1) 0;
+    }
+    &.editable {
+        header {
+            background-color: #fff;
+            // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            color: #333;
+            transition: all 0.7s;
+        }
+        form {
+            float: left;
+            width: 100%;
+            
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-right: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            .sideInputs {
+                padding-left: 15px;
+            }
+            .mainInputs {
+                padding-right: 15px;
+            }
+            
+        }
+    }
+    &.isEditing header {
+        background-color: #333!important;
+        color: $white;
+        transition: all 0.7s;
+    }
+    header {
+        @include span-columns(12);
+        @include type-setting(1);
+        transition: all 0.7s;
+        color: $white;
+        background-color: $darkBlue;
+        padding: 0 default-spacing(1);
+        font-weight: 200;
+        h4 {
+            float: left;
+        }
+        button[md-raised-button] {
+            float: right;
+            margin-right: 5px;
+            color: lighten($black, 25%);
+            margin-top: default-spacing(1);
+        }
+    }
+    .sideInputs {
+        @include span-columns(4);
+        padding-top: default-spacing(2);
+        md-radio-group.block {
+            md-radio-button {
+                display: block;
+                padding: 0 5px;
+            }
+            .md-radio-label-content {
+                float: initial;
+            }
+        }
+        .form-group {
+            position: relative;
+        }
+        md-input {
+            width: 100%;
+        }
+        .ui-inputtext {
+            padding: 6px;
+        }
+        .md-input-element {
+            padding-right: 75px;
+        }
+        .ui-dropdown {
+            width: 61px!important;
+            padding-right: 0;
+        }
+        p-dropdown {
+            position: absolute;
+            top: 43px;
+            right: 0;
+        }
+    }
+    .mainInputs {
+        @include span-columns(8);
+        padding-top: default-spacing(2);
+        md-radio-group {
+            label {
+                width: 100%;
+                float: left;
+                padding-bottom: 5px;
+            }
+        }
+        .third {
+            @include span-columns(4);
+        }
+        .full {
+            @include span-columns(12);
+        }
+        .ui-autocomplete-token {
+            width: 100%;
+        }
+        .ui-autocomplete-panel .ui-autocomplete-list {
+            background-color: $white
+        }
+        .ui-autocomplete .ui-autocomplete-multiple {
+            border-bottom: 1px solid lighten($black, 75%);
+            .ui-inputtext {
+                border: none;
+            }
+        }
+        .ui-autocomplete {
+            width: 100%;
+        }
+        .ui-autocomplete .ui-inputtext {
+            padding: 6px;
+            font-size: 14px;
+            border: none;
+            width: 100%;
+            border-bottom: 1px solid lighten($black, 75%);
+        }
+    }
+}

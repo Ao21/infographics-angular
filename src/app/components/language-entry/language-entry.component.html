@@ -1,0 +1,35 @@
+<template [ngIf]="data && !isOpen">
+<div class="header">
+    <h4 *ngIf="data">{{countryName}}</h4>
+    <button (click)="isOpen=!isOpen" md-raised-button>Edit</button>
+</div>
+</template>
+<template [ngIf]="!data && !isOpen">
+<div class="header">
+    <h4>Add Translation</h4>
+    <button (click)="isOpen=!isOpen" md-raised-button>Add</button>
+</div>
+</template>
+<template [ngIf]="isOpen">
+    <form #languageEntry="ngForm">
+     <div class="header">
+            <h4 *ngIf="model">Add Translation</h4>
+            <h4 *ngIf="!model">{{countryName}}</h4>
+            <button (click)="save($event)" md-raised-button>Save</button>
+            <button (click)="cancel($event)" md-raised-button>Cancel</button>
+        </div>
+        <section>
+             <div class="form-group" *ngIf="model">
+                <p-dropdown [options]="countries" [(ngModel)]="lModel.country" name="country"></p-dropdown>
+             </div>
+            <div *ngIf="!model" class="form-group">
+                 <button (click)="delete($event)"  md-raised-button color="warn">Delete</button>
+              </div>
+            <div class="form-group">
+                <label *ngIf="!translation"  for="translation">Enter a new Translation</label>
+                <label *ngIf="translation" for="translation">Previous Translation: {{translation}}</label>
+                <md-input [(ngModel)]="lModel.translation" name="translation" placeholder="Update translation"></md-input>
+             </div>
+        </section>
+    </form>
+</template>

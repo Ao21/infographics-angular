@@ -1,0 +1,78 @@
+@import "~bourbon-neat/app/assets/stylesheets/neat";
+@import "./../../../styles/base/colours";
+@import "./../../../styles/base/layout";
+
+:host {
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-bottom: default-spacing(1);
+    .header {
+        @include span-columns(12);
+        @include type-setting(1);
+        padding: 0 default-spacing(1);
+        font-weight: 200;
+        background-color: $blue;
+        color: white;
+        h4 {
+            float: left;
+        }
+        button[md-raised-button] {
+            float: right;
+            margin-right: 5px;
+            margin-top: 15px;
+            color: lighten($black, 25%);
+        }
+    }
+    &.editable {
+        margin-bottom: 0;
+        .header {
+            background-color: white;
+            color: black;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.7s;
+        }
+    }
+    form section {
+        float: left;
+        width: 100%;
+        position: relative;
+        padding: default-spacing(1);
+        .form-group:first-child {
+            @include span-columns(3);
+        }
+        .form-group:last-child {
+            @include span-columns(8);
+        }
+    }
+    md-input {
+        width: 100%;
+    }
+    p-dropdown {
+        .ui-dropdown {
+            //height: 18px;
+            padding-right: 1em;
+        }
+        .ui-dropdown-trigger {
+            display: none;
+        }
+        .ui-dropdown-label {
+            padding-left: 0;
+            border-bottom: 1px solid $blue;
+        }
+        .ui-dropdown-items li {
+            font-size: 13px;
+            &.ui-state-highlight {
+                background-color: $blue;
+                color: $white;
+            }
+            &.ui-state-hover {
+                background-color: $blue;
+                color: $white;
+            }
+        }
+        .ui-dropdown-items-wrapper {
+            background-color: white;
+        }
+    }
+}

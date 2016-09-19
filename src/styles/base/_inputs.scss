@@ -1,0 +1,79 @@
+.form-group {
+    label {
+        float: left;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+    @include span-columns(12);
+    margin-bottom: 24px;
+}
+
+textarea {
+    @include type-setting(1);
+    width: 100%;
+    height: 120px;
+    border: 3px solid #cccccc;
+    padding: 5px;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+
+#dd-currency {
+    height: 30px;
+    right: 2rem;
+    .ui-dropdown {
+        width: 58px!important;
+        padding-right: 0;
+    }
+    .ui-dropdown-items-wrapper {
+        background-color: white;
+    }
+    .ui-dropdown-panel .ui-dropdown-list {
+        padding: 0;
+    }
+    .ui-dropdown-panel .ui-dropdown-item {
+        padding: 3px 10px;
+        &:hover {
+            background-color: $blue;
+            color: white;
+        }
+    }
+    label {
+        margin-bottom: 0;
+    }
+}
+
+md-input{
+    width: 100%;
+}
+
+.ui-autocomplete{
+    width: 100%!important;
+}
+
+.ui-autocomplete-token {
+    width: 100%;
+}
+
+.ui-autocomplete-panel .ui-autocomplete-list {
+    background-color: $white
+}
+
+.ui-autocomplete .ui-autocomplete-multiple {
+    border-bottom: 1px solid lighten($black, 75%);
+    .ui-inputtext {
+        border: none;
+    }
+}
+
+.ui-autocomplete {
+    width: 100%;
+}
+
+.ui-autocomplete .ui-inputtext {
+    padding: 6px;
+    font-size: 14px;
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid lighten($black, 75%);
+}

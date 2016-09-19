@@ -1,0 +1,5 @@
+<header>
+    <h1>Categories</h1>
+</header>
+<app-category-entry type="default" [default]="true" (onRefresh)="refresh($event)"></app-category-entry>
+<app-category-entry type="default" class="editable" [default]="false" (onRefresh)="refresh()" (onDelete)="onDelete($event)" *ngFor="let category of categories" [data]="category"></app-category-entry>

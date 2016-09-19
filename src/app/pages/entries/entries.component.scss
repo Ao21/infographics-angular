@@ -1,0 +1,49 @@
+@import "~bourbon-neat/app/assets/stylesheets/neat";
+@import "./../../../styles/base/colours";
+@import "./../../../styles/base/layout";
+
+:host {
+    & > c-funding-entry header {
+        margin-bottom: default-spacing(1);
+    }
+    & > section {
+        float: left;
+        width: 100%;
+    }
+    .info {
+        border: 1px dashed #333;
+        margin-bottom: default-spacing(1);
+        cursor: pointer;
+        &:hover {
+            border: 1px dashed $red;
+            h4 {
+                color: $red;
+            }
+        }
+        &.no-margin {
+            margin-bottom: 0;
+        }
+        h4 {
+            margin: 0;
+            text-align: center;
+            color: #333;
+            padding: default-spacing(1) 0;
+        }
+    }
+    .funds__group {
+        float: left;
+        width: 100%;
+        margin-bottom: default-spacing(1);
+        h1:first-of-type {
+            border-bottom: 3px solid rgba(51, 51, 51, 0.8);
+            font-size: 20px;
+            text-align: right;
+            padding-bottom: default-spacing(0.5);
+        }
+    }
+    .funding__entries {
+        c-funding-entry.editable:nth-of-type(odd) header {
+            background-color: rgba(0, 188, 212, 0.21);
+        }
+    }
+}

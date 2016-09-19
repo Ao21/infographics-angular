@@ -1,0 +1,9 @@
+<div class="items">
+	<button [routerLink]="['./funding-categories']">Funding Categories</button>
+	<button [routerLink]="['./categories']">Categories</button>
+	<button [routerLink]="['./countries']">All Countries</button>
+</div>
+<div class="login">
+<button *ngIf="!loggedIn()" (click)="login()">Login</button>
+<button *ngIf="loggedIn()" (click)="logout()">Logout</button>
+</div>

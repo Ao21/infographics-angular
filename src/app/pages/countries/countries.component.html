@@ -1,0 +1,5 @@
+<header>
+    <h1>Countries</h1>
+</header>
+<app-country-entry (onRefresh)="refresh($event)"></app-country-entry>
+<app-country-entry (onDelete)="onDelete($event)" *ngFor="let country of countries" [data]="country"></app-country-entry>

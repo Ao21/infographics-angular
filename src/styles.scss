@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "styles/base/init"; 
+@import "styles/base/layout"; 
+@import "styles/base/colours";
+@import "styles/vendor/material";
+
+@import "styles/base/app";
+@import "styles/base/inputs";
+
+@import "styles/base/typography";
+
+@import "styles/vendor/toastr";
+@import "styles/vendor/prime";
+
+@import "styles/components/toolbar";
+

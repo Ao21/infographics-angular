@@ -1,0 +1,68 @@
+<template [ngIf]="data && !isEditing">
+    <header>
+    <h4 *ngIf="data">{{data.name}}</h4>
+    <button [routerLink]="['/entries',link]" md-raised-button>Edit Entries</button>
+    <button (click)="isEditing=!isEditing" md-raised-button>Edit</button>
+</header>
+</template>
+
+<template [ngIf]="!data && !isEditing">
+<header>
+    <h4>Add Country</h4>
+    <button (click)="isEditing=!isEditing" md-raised-button>Add</button>
+</header>
+</template>
+
+<template [ngIf]="isEditing">
+    <form  #countryForm="ngForm"  (ngSubmit)="onSubmit()">
+          <header>
+            <h4 *ngIf="!data">Add Country</h4>
+            <h4 *ngIf="data">Edit {{data.name}}</h4>
+            <button type="submit" [disabled]="!countryForm.form.valid" md-raised-button>Save</button>
+        </header>
+        <section class="sidebar">
+              <div class="ctry-form__name form-group">
+                <label for="">Country Name</label>
+                <md-input [disabled]="data"  required [(ngModel)]="model.name" name="name" placeholder="Name"></md-input>
+                <button (click)="delete($event)" *ngIf="data" md-raised-button color="warn">Delete</button>
+            </div>
+        </section>
+
+        <section class="details">
+            <div class=" form-group ctry-form__description">
+                <label for="">Description</label>
+                <textarea required [(ngModel)]="model.description" name="description" cols="30" rows="10"></textarea>
+            </div>
+            <div class=" form-group ctry-form__translations">
+                <h3>Translations</h3>
+                <div class="article">
+                    <h4>County Name</h4>
+                    <md-input [(ngModel)]="model.translations.countryName" name="countryName" placeholder=""></md-input>
+                </div>
+                <div class="article">
+                    <h4>Total Amount Given For</h4>
+                    <code>&lt;span&gt;Total &lt;/span&gt; Amount given for &lt;span class=&quot;country_name&quot;&gt;&lt;/span&gt;</code>
+                    <md-input [(ngModel)]="model.translations.total" name="total" placeholder=""></md-input>
+                </div>
+                <div class="article">
+                    <h4>Total Amount Given For</h4>
+                    <code>Comprises &lt;span class=&quot;percentage&quot;&gt;&lt;/span&gt; of</code>
+                    <md-input [(ngModel)]="model.translations.comprises" name="comprises" placeholder=""></md-input>
+                </div>
+                <div class="article">
+                    <h4>Contributions as of</h4>
+                    <md-input [(ngModel)]="model.translations.contributions" name="contributions" placeholder=""></md-input>
+                </div>
+                <div class="article">
+                    <h4>UNHCR TOTAL CONTRIBUTIONS</h4>
+                    <md-input [(ngModel)]="model.translations.unhcr" name="unhcr" placeholder=""></md-input>
+                </div>
+                <div class="article">
+                    <h4>Total Contributions for</h4>
+                    <md-input [(ngModel)]="model.translations.totalContributions" name="totalContributions" placeholder=""></md-input>
+                </div>
+            </div>
+        </section>
+        
+    </form>
+</template>

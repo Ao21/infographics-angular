@@ -1,0 +1,53 @@
+@import "~bourbon-neat/app/assets/stylesheets/neat";
+@import "./../../../styles/base/colours";
+@import "./../../../styles/base/layout";
+
+:host {
+    @include span-columns(12);
+    
+    header {
+        @include span-columns(12);
+        @include type-setting(1);
+        color: $white;
+        background-color: $blue;
+        padding: 0 default-spacing(1);
+        margin-bottom: default-spacing(1);
+        font-weight: 200;
+        h4 {
+            float: left;
+        }
+        
+        button[md-raised-button] {
+            float: right;
+            margin-right: 5px;
+            color: lighten($black, 25%);
+            margin-top: default-spacing(1);
+        }
+    }
+    section.sidebar {
+        @include span-columns(3);
+    }
+    section.details {
+        @include span-columns(9);
+    }
+    .form-group { 
+        md-input{
+            width: 100%;
+        }
+    }  
+
+    .ctry-form {
+        &__translations {
+            h3 {
+                float: left;
+                width: 100%;
+                border-bottom: 1px solid rgba(0,0,0,0.1);
+            }
+            h4 {
+                width: 100%;
+                float: left;
+                margin: 0 0 6px;
+            }
+        }
+    } 
+}

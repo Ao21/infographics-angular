@@ -1,0 +1,5 @@
+<header>
+    <h1>Funding Categories</h1>
+</header>
+<app-category-entry type="funding" [default]="true" (onRefresh)="refresh($event)"></app-category-entry>
+<app-category-entry type="funding" class="editable" [default]="false" (onRefresh)="refresh()" (onDelete)="onDelete($event)" *ngFor="let category of categories" [data]="category"></app-category-entry>

@@ -1,0 +1,50 @@
+<h1>{{country.name}}</h1>
+<app-funding-entry [default]="true" (onRefresh)="refresh($event)" [country]="country"></app-funding-entry>
+<div class="toolbar">
+	<section class="details">
+		<article>
+			<h3>Filters</h3>
+			<div class="toolbar__items">
+				<div class="toolbar__item">
+					<label for="Category">Filter by Category</label>
+					<p-dropdown (onChange)="updateCategoryFilter()" [options]="categoryFilterItems" [(ngModel)]="selectedCategory" [style]="{'width':'150px'}"></p-dropdown>
+				</div>
+				<div class="toolbar__item">
+					<label for="Category">Filter by Year</label>
+					<p-dropdown  (onChange)="updateYearFilter()" [options]="categoryFilterYears" [(ngModel)]="selectedYear" [style]="{'width':'150px'}"></p-dropdown>
+				</div>
+				<div class="toolbar__item">
+					<label for="Category">Filter by Geographic Area</label>
+					<p-dropdown (onChange)="updateGeoFilter()" [options]="categoryGeographicArea" [(ngModel)]="selectedGeographic" [style]="{'width':'150px'}"></p-dropdown>
+				</div>
+			</div>
+		</article>
+		<article>
+			<h3>Grouping</h3>
+			<div class="toolbar__items">
+				<div class="toolbar__item">
+					<label for="Category">Group by</label>
+					<p-dropdown (onChange)="updateGrouping()" [options]="groupingTypes" [(ngModel)]="selectedGrouping" [style]="{'width':'150px'}"></p-dropdown>
+				</div>
+			</div>
+		</article>
+
+	</section>
+
+
+</div>
+<section *ngIf="!isGroupVisible" class="funding__entries">
+	<div (click)="reset()" *ngIf="isFilterEnabled" class="info"><h4>Remove Filters</h4></div>
+	<section class="funds__group">
+		<app-funding-entry class="editable" [default]="false" (onDelete)="onDelete($event)" *ngFor="let entry of entries" [data]="entry" [country]="country"></app-funding-entry>
+	</section>
+</section>
+<section *ngIf="isGroupVisible">
+	<div (click)="reset()" class="info no-margin">
+		<h4 *ngIf="isFilterEnabled && isGroupVisible">Remove Filters & Grouping</h4>
+		<h4 *ngIf="!isFilterEnabled && isGroupVisible">Remove Grouping</h4></div>
+	<section class="funding__entries funds__group" *ngFor="let entry of entries | keys">
+		<h1>{{entry.key}}</h1>
+		<app-funding-entry class="editable" [default]="false" (onRefresh)="onRefresh()" (onDelete)="onDelete($event)" *ngFor="let entry of entry.value" [data]="entry" [country]="country"></app-funding-entry>
+	</section>
+</section>
