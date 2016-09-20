@@ -33,7 +33,7 @@ export class AuthService {
       localStorage.setItem('profile', JSON.stringify(profile));
       localStorage.setItem('id_token', token);
       this.zoneImpl.run(() => this.user = profile);
-      this.router.navigate(['Countries']);
+      this.router.navigate(['countries']);
     });
   }
 
@@ -41,7 +41,7 @@ export class AuthService {
     localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
     this.zoneImpl.run(() => this.user = null);
-    this.router.navigate(['Home']);
+    this.router.navigate(['/']);
   }
 
 }

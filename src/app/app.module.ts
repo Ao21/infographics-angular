@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { routing,
          appRoutingProviders }  from './app.routing';
@@ -47,6 +48,7 @@ import { AuthService, NotificationService, ReferenceService, UploadService, Entr
     UploadService,
     EntryService,
     CountryService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     CategoryService
   ],
   bootstrap: [AppComponent]

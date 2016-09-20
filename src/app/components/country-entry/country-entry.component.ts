@@ -33,7 +33,7 @@ export class CountryEntryComponent implements OnInit {
   isEditing: boolean = false;
   link: any;
 
-  model = new CountryModel('', '', null);
+  model = new CountryModel('', '', { total: '', countryName: ''});
   text: string;
   results: string[] = ['Savings'];
 
@@ -64,7 +64,7 @@ export class CountryEntryComponent implements OnInit {
       this.countryService.create(this.model).subscribe(
         (next) => {
           this.onRefresh.next(next.json());
-          this.model = new CountryModel("", "", null);
+          this.model = new CountryModel('', '', { total: '', countryName: '' });
           this.isEditing = false;
         },
         (err) => { console.log(err); }
