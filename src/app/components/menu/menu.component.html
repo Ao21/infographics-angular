@@ -1,4 +1,4 @@
-<div class="items">
+<div class="items" *ngIf="loggedIn()">
 	<button [routerLink]="['./funding-categories']">Funding Categories</button>
 	<button [routerLink]="['./categories']">Categories</button>
 	<button [routerLink]="['./countries']">All Countries</button>
