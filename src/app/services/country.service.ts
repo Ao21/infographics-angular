@@ -44,6 +44,7 @@ export class CountryService {
     let res = this.http.get(API_CONSTANTS.api.countries.list).share();
     res.subscribe((next) => {
       let countries: any[] = next.json();
+      console.log(countries);
       this.countryList = [];
       this.countryList.push({
         label: 'Select Country',

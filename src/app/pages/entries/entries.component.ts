@@ -50,10 +50,11 @@ export class EntriesComponent implements OnInit {
 
   ngOnInit() {
     this.activeRoute.params.subscribe((params: any) => {
-      let country = params.country;
-      this.countryService.get(country).subscribe(
+      let ctry = params.country;
+      this.countryService.get(ctry).subscribe(
         (data) => {
           this.country = data.json();
+          console.log(this.country);
           this.entryService.getByCountry(this.country._id).subscribe(
             (next) => {
               this.allEntries = this.entries = next.json();

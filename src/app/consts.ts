@@ -8,7 +8,7 @@ if (environment.production) {
             countries: {
                 create: '/api/country',
                 delete: '/api/remove/country',
-                list: '/api/country',
+                list: '/api/countries',
                 get: '/api/country/',
                 fields: '/api/fields/country',
                 update: '/api/update/country'
@@ -21,7 +21,7 @@ if (environment.production) {
             },
             categories: {
                 listType: '/api/category/type/',
-                list: '/api/category',
+                list: '/api/categories',
                 save: '/api/category',
                 get: '/api/category/id',
                 delete:'/api/category/remove'
@@ -36,7 +36,7 @@ if (environment.production) {
             countries: {
                 create: 'http://localhost:5000/api/country',
                 delete: 'http://localhost:5000/api/remove/country',
-                list: 'http://localhost:5000/api/country',
+                list: 'http://localhost:5000/api/countries',
                 get: 'http://localhost:5000/api/country/',
                 fields: 'http://localhost:5000/api/fields/country',
                 update: 'http://localhost:5000/api/update/country'
@@ -49,7 +49,7 @@ if (environment.production) {
             },
             categories: {
                 listType: 'http://localhost:5000/api/category/type/',
-                list: 'http://localhost:5000/api/category',
+                list: 'http://localhost:5000/api/categories',
                 save: 'http://localhost:5000/api/category',
                 get: 'http://localhost:5000/api/category/id',
                 delete:'http://localhost:5000/api/category/remove'
