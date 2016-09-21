@@ -23,6 +23,7 @@ export class EntryModel {
     public CATEGORY_REF: string,
     public EMERGENCY_LOCAL: string,
     public THEMATIC_LOCAL: string,
+    public LEGEND_NAME_LOCAL: string,
   ) { }
 }
 
@@ -51,7 +52,7 @@ export class FundingEntryComponent implements OnInit {
   category: string;
   entryName: string;
 
-  model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','');
+  model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','');
 
 
   constructor(
@@ -100,7 +101,8 @@ export class FundingEntryComponent implements OnInit {
       this.data.THEMATIC,
       this.data.CATEGORY_REF,
       this.data.EMERGENCY_LOCAL,
-      this.data.THEMATIC_LOCAL
+      this.data.THEMATIC_LOCAL,
+      this.data.LEGEND_NAME_LOCAL
 
     )
     this.category = this.data.CATEGORY;
@@ -112,7 +114,7 @@ export class FundingEntryComponent implements OnInit {
     evt.preventDefault();
     if (this.default || !this.data) {
       this.data = null;
-      this.model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','');
+      this.model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','');
     } else {
       this.mapDataToModel(this.data);
     }
@@ -130,7 +132,7 @@ export class FundingEntryComponent implements OnInit {
         let obj = next.json();
         if (this.default) {
           this.data = null;
-          this.model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','');
+          this.model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','');
         }
         this.category = obj.CATEGORY;
         this.entryName = obj.LEGEND_NAME;

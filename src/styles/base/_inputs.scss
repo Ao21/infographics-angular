@@ -11,7 +11,7 @@
 textarea {
     @include type-setting(1);
     width: 100%;
-    height: 120px;
+    height: 105px;
     border: 3px solid #cccccc;
     padding: 5px;
     background-position: bottom right;
@@ -24,9 +24,6 @@ textarea {
     .ui-dropdown {
         width: 58px!important;
         padding-right: 0;
-    }
-    .ui-dropdown-items-wrapper {
-        background-color: white;
     }
     .ui-dropdown-panel .ui-dropdown-list {
         padding: 0;
@@ -43,12 +40,33 @@ textarea {
     }
 }
 
-md-input{
+.ui-dropdown-items-wrapper {
+    background-color: white;
+}
+
+.ui-autocomplete-token {
+    .ui-autocomplete-token-label {
+        padding: 5px 0px 5px 0;
+        border-bottom: 1px solid #cccccc;
+        &:first-child {
+            margin-top: 0px;
+        }
+        &:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}
+.ui-autocomplete-token + .ui-autocomplete-input-token{
+    margin: 10px 2px;
+}
+
+md-input {
     width: 100%;
 }
 
-.ui-autocomplete{
+.ui-autocomplete {
     width: 100%!important;
+    margin: 8px 0 5px;
 }
 
 .ui-autocomplete-token {

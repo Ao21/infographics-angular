@@ -46,17 +46,17 @@ export class CountryService {
       let countries: any[] = next.json();
       this.countryList = [];
       this.countryList.push({
-        label: 'Select City',
+        label: 'Select Country',
         value: null
-      })
+      });
       countries.forEach((country) => {
         this.countryList.push({
           label: country.name,
           value: country.name
         });
-      })
+      });
 
-    })
+    });
     return res;
   }
   getFields() {
