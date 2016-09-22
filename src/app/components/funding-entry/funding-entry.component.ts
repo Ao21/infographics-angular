@@ -141,8 +141,7 @@ export class FundingEntryComponent implements OnInit {
       (err) => {
         this.notificationService.createError(err.text());
         console.log(err);
-      }
-    );
+      });
   }
   delete(evt: Event) {
     evt.stopPropagation();

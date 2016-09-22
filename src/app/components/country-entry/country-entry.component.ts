@@ -49,9 +49,11 @@ export class CountryEntryComponent implements OnInit {
       if (!this.data.translations) {
         this.data.translations = {};
       }
-      this.renderer.setElementClass(this.el, this.data.name, true);
+      this.renderer.setElementClass(this.el.nativeElement, 'app-country-' + this.data.name, true);
       this.model = new CountryModel(this.data.name, this.data.description, this.data.translations);
       this.link = { country: this.data.name_lower };
+    } else {
+      this.renderer.setElementClass(this.el.nativeElement, 'app-country-add', true);
     }
   }
 

@@ -1,23 +1,23 @@
 <template [ngIf]="data && !isEditing">
     <header>
     <h4 *ngIf="data">{{data.name}}</h4>
-    <button [routerLink]="['/entries',link]" md-raised-button>Edit Entries</button>
-    <button (click)="isEditing=!isEditing" md-raised-button>Edit</button>
+    <button class="editCountryEntries" [routerLink]="['/entries',link]" md-raised-button>Edit Entries</button>
+    <button class="editCountry" (click)="isEditing=!isEditing" md-raised-button>Edit</button>
 </header>
 </template>
 
 <template [ngIf]="!data && !isEditing">
 <header>
     <h4>Add Country</h4>
-    <button (click)="isEditing=!isEditing" md-raised-button>Add</button>
+    <button class="addCountry" (click)="isEditing=!isEditing" md-raised-button>Add</button>
 </header>
 </template>
 
 <template [ngIf]="isEditing">
     <form  #countryForm="ngForm"  (ngSubmit)="onSubmit()">
           <header>
-            <h4 *ngIf="!data">Add Country</h4>
-            <h4 *ngIf="data">Edit {{data.name}}</h4>
+            <h4 class="addCountry" *ngIf="!data">Add Country</h4>
+            <h4 class="editCountry" *ngIf="data">Edit {{data.name}}</h4>
             <button type="submit" [disabled]="!countryForm.form.valid" md-raised-button>Save</button>
         </header>
         <section class="sidebar">

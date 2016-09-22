@@ -66,7 +66,7 @@ export class CountryService {
 
   update(id, obj) {
     let q = {
-      query: { _id: id },
+      query: { id: id },
       obj: obj
     }
     let options = new RequestOptions({
