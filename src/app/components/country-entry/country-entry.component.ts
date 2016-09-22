@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, Renderer, ElementRef, HostBinding, EventEmitter } from '@angular/core';
 import { CountryService } from './../../services/';
 
 export class TranslationModel {
@@ -30,6 +30,7 @@ export class CountryEntryComponent implements OnInit {
   @Input('data') data: any;
   @Output('onRefresh') onRefresh: EventEmitter<any> = new EventEmitter();
   @Output('onDelete') onDelete: EventEmitter<any> = new EventEmitter();
+
   isEditing: boolean = false;
   link: any;
 
@@ -38,6 +39,8 @@ export class CountryEntryComponent implements OnInit {
   results: string[] = ['Savings'];
 
   constructor(
+    private renderer: Renderer,
+    private el: ElementRef,
     private countryService: CountryService
   ) { }
 
@@ -46,6 +49,7 @@ export class CountryEntryComponent implements OnInit {
       if (!this.data.translations) {
         this.data.translations = {};
       }
+      this.renderer.setElementClass(this.el, this.data.name, true);
       this.model = new CountryModel(this.data.name, this.data.description, this.data.translations);
       this.link = { country: this.data.name_lower };
     }
