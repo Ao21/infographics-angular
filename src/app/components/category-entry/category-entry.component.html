@@ -30,9 +30,9 @@
     </div>
     <div class="mainInputs">
       <h3>Translations</h3>
-      <app-language-entry [def]="true" (onLanguageRefresh)="onLanguageRefresh()" [model]="model"></app-language-entry>
+      <app-language-entry [def]="true" (onLanguageRefresh)="onLanguageRefresh($event)" [model]="model" [data]="model.translations[0]"></app-language-entry>
       <div class="form-group">
-        <app-language-entry [def]="false" class="editable" (onLanguageRefresh)="onLanguageRefresh()" (onLanguageDelete)="onLanguageDelete($event)" *ngFor="let translation of model.translations, let ind = index;" [index]="ind" [data]="translation"></app-language-entry>
+        <app-language-entry [def]="false" class="editable" (onLanguageRefresh)="onLanguageRefresh($event)" (onLanguageDelete)="onLanguageDelete($event)" *ngFor="let entry of model.translations, let ind = index;" [data]="entry" [index]="ind"  [model]="model" ></app-language-entry>
       </div>
     </div>
   </form>

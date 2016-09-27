@@ -23,7 +23,7 @@ if (environment.production) {
                 listType: '/api/category/type/',
                 list: '/api/categories',
                 save: '/api/category',
-                get: '/api/category/id',
+                get: '/api/category/',
                 delete:'/api/category/remove'
             }
         }
@@ -51,7 +51,7 @@ if (environment.production) {
                 listType: 'http://localhost:5000/api/category/type/',
                 list: 'http://localhost:5000/api/categories',
                 save: 'http://localhost:5000/api/category',
-                get: 'http://localhost:5000/api/category/id',
+                get: 'http://localhost:5000/api/category/',
                 delete:'http://localhost:5000/api/category/remove'
             }
         }

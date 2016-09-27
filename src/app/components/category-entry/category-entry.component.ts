@@ -40,8 +40,12 @@ export class CategoryEntryComponent implements OnInit {
 
   ngOnInit() {
     if (this.data) {
+      if (!this.data.translations) {
+        this.data.translations = [];
+      }
       this.model = new CategoryModel(this.data._id, this.data.name, this.data.name_lower, this.data.type, this.data.translations);
       this.categoryName = this.data.name;
+    } else {
     }
   }
 
@@ -56,12 +60,19 @@ export class CategoryEntryComponent implements OnInit {
     this.isEditing = false;
   }
 
-  onLanguageRefresh() {
+  onLanguageRefresh(event?) {
+    if (event.isNew) {
+      this.model.translations.push(event.model);  
+    } else {
+      this.model.translations[event.index] = event.model;
+    }
     this.save();
   }
 
-  onLanguageDelete(index) {
-    this.data.translations.splice(index, 1);
+  onLanguageDelete(model) {
+    _.remove(this.model.translations, (e) => {
+      return e.country == model.country
+    })
     this.save();
   }
 
@@ -79,13 +90,13 @@ export class CategoryEntryComponent implements OnInit {
         this.isEditing = false;
       },
       (err) => {
-        console.log(err);
         this.notificationService.createError(err.text());
       })
   }
 
   save() {
-    this.categoryService.save(this.model).subscribe();
+    this.categoryService.save(this.model).subscribe((res) => {
+    });
   }
 
   delete(evt: Event) {

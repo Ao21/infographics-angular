@@ -53,7 +53,10 @@ export class ReferenceService {
 
   constructor(
     private http: AuthHttp
-  ) { }
+  ) { 
+    this.getCategories();
+    this.getSubcategories();
+  }
 
   clearCategories() {
     this.categoryList = [];
@@ -78,10 +81,21 @@ export class ReferenceService {
   }
 
   getCategory(name) {
-    return _.find((this.categoryList), (e) => {
+    let cat = _.find((this.categoryList), (e) => {
+      return e.name === name;
+    });
+    console.log(cat);
+    return cat ? cat : ''; 
+  }
+
+  getSubcategory(name) {
+    let cat = _.find((this.subCategoryList), (e) => {
       return e.name === name;
     })
+    console.log(cat);
+    return cat ? cat : '';
   }
+
 
   getCategories() {
     return new Promise((res, rej) => {
@@ -96,7 +110,7 @@ export class ReferenceService {
     })
   }
 
-  getSubcategories(query) {
+  getSubcategories() {
     return new Promise((res, rej) => {
       if (this.subCategoryList.length > 0) {
         res(this.subCategoryList);

@@ -7,6 +7,7 @@ import { MdButtonModule } from '@angular2-material/button';
 
 import { CategoryEntryComponent } from './category-entry.component';
 import { LanguageEntryModule } from './../language-entry/language-entry.module';
+import { PipesModule } from './../../pipes/pipe.module';
 
 @NgModule({
     imports: [
@@ -14,7 +15,8 @@ import { LanguageEntryModule } from './../language-entry/language-entry.module';
         FormsModule,
         MdInputModule,
         MdButtonModule,
-        LanguageEntryModule
+        LanguageEntryModule,
+        PipesModule
     ],
     declarations: [
         CategoryEntryComponent
@@ -25,3 +27,4 @@ import { LanguageEntryModule } from './../language-entry/language-entry.module';
     providers: []
 })
 export class CategoryEntryModule { }
+

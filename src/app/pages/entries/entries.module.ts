@@ -5,24 +5,24 @@ import { FormsModule } from '@angular/forms';
 import { EntriesComponent } from './entries.component';
 import { SharedComponentModules } from './../../components/shared_components.module';
 import { DropdownModule } from 'primeng/primeng';
-
-import { ObjectLoopPipe } from './../../pipes/object-loop.pipe';
+import { PipesModule} from './../../pipes/pipe.module';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         SharedComponentModules,
-        DropdownModule
+        DropdownModule,
+        PipesModule
     ],
     declarations: [
         EntriesComponent,
-        ObjectLoopPipe
+        
 
     ],
     exports: [
         EntriesComponent,
-        ObjectLoopPipe
+        
     ],
     providers: []
 })

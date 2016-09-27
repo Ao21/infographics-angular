@@ -20,7 +20,9 @@ export class CategoryService {
     return this.http.get(API_CONSTANTS.api.categories.listType + type);
   }
 
-  get() { }
+  get(id) {
+    return this.http.get(API_CONSTANTS.api.categories.get + id);
+  }
 
   save(obj) {
     let options = new RequestOptions({

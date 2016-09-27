@@ -24,6 +24,7 @@ export class EntryModel {
     public EMERGENCY_LOCAL: string,
     public THEMATIC_LOCAL: string,
     public LEGEND_NAME_LOCAL: string,
+    public FUNDING_CATEGORY_REF: string
   ) { }
 }
 
@@ -52,7 +53,7 @@ export class FundingEntryComponent implements OnInit {
   category: string;
   entryName: string;
 
-  model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','');
+  model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','','');
 
 
   constructor(
@@ -102,7 +103,8 @@ export class FundingEntryComponent implements OnInit {
       this.data.CATEGORY_REF,
       this.data.EMERGENCY_LOCAL,
       this.data.THEMATIC_LOCAL,
-      this.data.LEGEND_NAME_LOCAL
+      this.data.LEGEND_NAME_LOCAL,
+      this.data.FUNDING_CATEGORY_REF
 
     )
     this.category = this.data.CATEGORY;
@@ -114,7 +116,7 @@ export class FundingEntryComponent implements OnInit {
     evt.preventDefault();
     if (this.default || !this.data) {
       this.data = null;
-      this.model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','');
+      this.model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','','');
     } else {
       this.mapDataToModel(this.data);
     }
@@ -125,6 +127,11 @@ export class FundingEntryComponent implements OnInit {
     this.model.COUNTRY_NAME = this.country.name;
     this.model.COUNTRY_ID = this.country._id;
     this.model.CATEGORY_REF = this.referenceService.getCategory(this.model.CATEGORY)._id;
+    if (this.model.FUNDING_CATEGORY && this.model.FUNDING_CATEGORY !== '') {
+      this.model.FUNDING_CATEGORY_REF = this.referenceService.getSubcategory(this.model.FUNDING_CATEGORY);  
+    } else {
+      this.model.FUNDING_CATEGORY_REF = null;
+    }
     let obj = _.assign({}, this.model, { MAP_COUNTRY: this.model.MAP_COUNTRY.join(';') });
     this.entryService.create(obj).subscribe(
       (next) => {
@@ -132,7 +139,7 @@ export class FundingEntryComponent implements OnInit {
         let obj = next.json();
         if (this.default) {
           this.data = null;
-          this.model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','');
+          this.model = new EntryModel(null, moment().format('YYYY-MM-DD'), '', '', '', '', '', null, 'EUR', null, '', [], '', '', '','','','','','');
         }
         this.category = obj.CATEGORY;
         this.entryName = obj.LEGEND_NAME;
@@ -162,7 +169,7 @@ export class FundingEntryComponent implements OnInit {
 
   }
   search(event) {
-    this.referenceService.getSubcategories(event.query).then((data) => {
+    this.referenceService.getSubcategories().then((data) => {
       this.subCategoryResults = _.map(data, (e: any) => {
         return e.name;
       });

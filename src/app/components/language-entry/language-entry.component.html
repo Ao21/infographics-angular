@@ -1,10 +1,10 @@
-<template [ngIf]="data && !isOpen">
+<template [ngIf]="!def && !isOpen">
 <div class="header">
-    <h4 *ngIf="data">{{countryName}}</h4>
+    <h4 *ngIf="data">{{countryName}} - {{translation}}</h4>
     <button (click)="isOpen=!isOpen" md-raised-button>Edit</button>
 </div>
 </template>
-<template [ngIf]="!data && !isOpen">
+<template [ngIf]="def && !isOpen">
 <div class="header">
     <h4>Add Translation</h4>
     <button (click)="isOpen=!isOpen" md-raised-button>Add</button>
@@ -13,16 +13,16 @@
 <template [ngIf]="isOpen">
     <form #languageEntry="ngForm">
      <div class="header">
-            <h4 *ngIf="model">Add Translation</h4>
-            <h4 *ngIf="!model">{{countryName}}</h4>
+            <h4 *ngIf="def">Add Translation</h4>
+            <h4 *ngIf="!def">{{countryName}}</h4>
             <button (click)="save($event)" md-raised-button>Save</button>
             <button (click)="cancel($event)" md-raised-button>Cancel</button>
         </div>
         <section>
-             <div class="form-group" *ngIf="model">
+             <div class="form-group" *ngIf="def">
                 <p-dropdown [options]="countries" [(ngModel)]="lModel.country" name="country"></p-dropdown>
              </div>
-            <div *ngIf="!model" class="form-group">
+            <div *ngIf="!def" class="form-group">
                  <button (click)="delete($event)"  md-raised-button color="warn">Delete</button>
               </div>
             <div class="form-group">

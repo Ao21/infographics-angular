@@ -3,8 +3,10 @@ import { ReferenceService, CountryService } from './../../services/';
 
 export class LanguageModel {
   constructor(
-    country: string,
-    translation: string
+    public country: string,
+    public translation: string,
+    public country_name_lower: string,
+
   ) { }
 }
 
@@ -22,7 +24,7 @@ export class LanguageEntryComponent implements OnInit {
   @Output('onLanguageRefresh') onLanguageRefresh: EventEmitter<any> = new EventEmitter();
   @Output('onLanguageDelete') onLanguageDelete: EventEmitter<any> = new EventEmitter();
   isOpen: boolean = false;
-  lModel: LanguageModel = new LanguageModel('', '');;
+  lModel: LanguageModel = new LanguageModel('', '', '');;
   countries: any[];
 
 
@@ -40,12 +42,11 @@ export class LanguageEntryComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this);
     if (this.data) {
       this.countryName = this.data.country;
       this.translation = this.data.translation;
-      this.lModel = new LanguageModel(this.data.country, this.data.translation);
-    } else if (this.model) {
-      this.lModel = new LanguageModel('', '');
+      this.lModel = new LanguageModel(this.data.country, this.data.translation, this.data.country.toLowerCase().replace(new RegExp(' ', 'g'), '_'));
     }
   }
 
@@ -57,25 +58,26 @@ export class LanguageEntryComponent implements OnInit {
     evt.stopPropagation();
     evt.stopImmediatePropagation();
     evt.preventDefault();
-    this.onLanguageDelete.next(this.index);
+    this.onLanguageDelete.next(this.lModel);
   }
 
   save(evt: Event) {
     evt.stopPropagation();
     evt.stopImmediatePropagation();
     evt.preventDefault();
-    if (this.model && !this.model.translations || this.model && this.model.translations.length === 0) {
-      this.model.translations = [this.lModel];
-    } else if (this.model && this.model.translations.length != 0) {
-      this.model.translations.push(this.lModel);
-    } else if (this.data) {
+    this.lModel.country_name_lower = this.lModel.country.toLowerCase().replace(new RegExp(' ', 'g'), '_');
+   
+    if (!this.def) {
       this.data = this.lModel;
+      this.onLanguageRefresh.next({ model: this.data, index: this.index, isNew: false });
+    } else {
+      this.onLanguageRefresh.next({ model: this.lModel, isNew: true });
     }
-    if (this.model) {
-      this.lModel = new LanguageModel('', '');
+    if (this.def) {
+      this.lModel = new LanguageModel('', '', '');
     }
     this.isOpen = false;
-    this.onLanguageRefresh.next(this.lModel);
+    
   }
 
   cancel(evt: Event) {
@@ -83,7 +85,7 @@ export class LanguageEntryComponent implements OnInit {
     evt.stopImmediatePropagation();
     evt.preventDefault();
     if (this.model) {
-      this.lModel = new LanguageModel('', '');
+      this.lModel = new LanguageModel('', '', '');
     }
     this.isOpen = false;
   }
